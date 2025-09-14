@@ -12,11 +12,10 @@ namespace Library.Console
 
             Library_Logic library_Logic = new Library_Logic();
 
-            library_Logic.CreateCategory("roman");
 
-            library_Logic.CreateBook("run pike", "description", "Pyskun", 123, 2023, 1);
-            library_Logic.CreateBook("run banan", "description", "tolstoy", 435, 1323, 1);
-            library_Logic.DeleteBook(1);
+            System.Console.ReadLine();
+
+
 
         }
     }
