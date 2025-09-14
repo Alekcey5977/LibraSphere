@@ -118,12 +118,12 @@ namespace Library.Logic
             return book;
         }
 
-        public List<Book> GetCategoryByTitle(int id)
+        public List<Book> GetCategoryByTitle(int category_id)
         {
             var book = new List<Book>();
             using var conn = _context.GetConnection();
-            using var cmd = new NpgsqlCommand("SELECT * FROM books WHERE category_id = @id", conn);
-            cmd.Parameters.AddWithValue("category_id", id);
+            using var cmd = new NpgsqlCommand("SELECT * FROM books WHERE category_id = @category_id", conn);
+            cmd.Parameters.AddWithValue("category_id", category_id);
 
             using var reader = cmd.ExecuteReader();
 
