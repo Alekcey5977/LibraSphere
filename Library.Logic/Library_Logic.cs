@@ -61,5 +61,13 @@ namespace Library.Logic
                 Title = title,
             };
         }
+
+        public bool DeleteBook(int id)
+        {
+            using var conn = _context.GetConnection();
+            using var cmd = new NpgsqlCommand("DELETE FROM books WHERE id = @id", conn);
+            cmd.Parameters.AddWithValue("id", id);
+            return cmd.ExecuteNonQuery() > 0;
+        }
     }
 }

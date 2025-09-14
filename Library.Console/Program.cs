@@ -16,7 +16,7 @@ namespace Library.Console
 
             library_Logic.CreateBook("run pike", "description", "Pyskun", 123, 2023, 1);
             library_Logic.CreateBook("run banan", "description", "tolstoy", 435, 1323, 1);
-
+            library_Logic.DeleteBook(1);
 
         }
     }
