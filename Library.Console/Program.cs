@@ -70,10 +70,17 @@ class Program
         Console.WriteLine("=== ВСЕ КНИГИ ===\n");
 
         var books = libraryLogic.GetAllBook();
-        foreach (var book in books)
+        if (books.Count == 0)
         {
-            PrintBook(book);
-            Console.WriteLine();
+            Console.WriteLine("Книги не найдены.");
+        }
+        else
+        {
+            foreach (var book in books)
+            {
+                PrintBook(book);
+                Console.WriteLine();
+            }
         }
         Exit();
     }
@@ -84,9 +91,16 @@ class Program
         Console.WriteLine("=== ВСЕ КАТЕГОРИИ ===\n");
 
         var categories = libraryLogic.GetAllCategories();
-        foreach (var category in categories)
+        if (categories.Count == 0)
         {
-            Console.WriteLine($"ID: {category.Id}, Название: {category.Title}");
+            Console.WriteLine("Категории не найдены.");
+        }
+        else
+        {
+            foreach (var category in categories)
+            {
+                Console.WriteLine($"ID: {category.Id}, Название: {category.Title}");
+            }
         }
         Exit();
     }
@@ -98,25 +112,65 @@ class Program
 
         Console.Write("Название: ");
         var title = Console.ReadLine();
+        if (string.IsNullOrWhiteSpace(title))
+        {
+            Console.WriteLine("Название не может быть пустым!");
+            Exit();
+            return;
+        }
 
         Console.Write("Описание: ");
         var description = Console.ReadLine();
+        if (string.IsNullOrWhiteSpace(description))
+        {
+            Console.WriteLine("Описание не может быть пустым!");
+            Exit();
+            return;
+        }
 
         Console.Write("Автор: ");
         var author = Console.ReadLine();
+        if (string.IsNullOrWhiteSpace(author))
+        {
+            Console.WriteLine("Автор не может быть пустым!");
+            Exit();
+            return;
+        }
 
         Console.Write("Количество страниц: ");
-        var pages = int.Parse(Console.ReadLine());
+        if (!int.TryParse(Console.ReadLine(), out int pages) || pages <= 0)
+        {
+            Console.WriteLine("Некорректное количество страниц!");
+            Exit();
+            return;
+        }
 
         Console.Write("Год издания: ");
-        var year = int.Parse(Console.ReadLine());
+        if (!int.TryParse(Console.ReadLine(), out int year) || year < 1000 || year > DateTime.Now.Year + 1)
+        {
+            Console.WriteLine("Некорректный год издания!");
+            Exit();
+            return;
+        }
 
         Console.Write("ID категории: ");
-        var categoryId = int.Parse(Console.ReadLine());
+        if (!int.TryParse(Console.ReadLine(), out int categoryId) || categoryId <= 0)
+        {
+            Console.WriteLine("Некорректный ID категории!");
+            Exit();
+            return;
+        }
 
-        var book = libraryLogic.CreateBook(title, description, author, pages, year, categoryId);
-        Console.WriteLine("\nКнига добавлена!");
-        PrintBook(book);
+        try
+        {
+            var book = libraryLogic.CreateBook(title, description, author, pages, year, categoryId);
+            Console.WriteLine("\nКнига добавлена!");
+            PrintBook(book);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"\nОшибка при добавлении книги: {ex.Message}");
+        }
         Exit();
     }
 
@@ -127,9 +181,22 @@ class Program
 
         Console.Write("Название категории: ");
         var title = Console.ReadLine();
+        if (string.IsNullOrWhiteSpace(title))
+        {
+            Console.WriteLine("Название категории не может быть пустым!");
+            Exit();
+            return;
+        }
 
-        var category = libraryLogic.CreateCategory(title);
-        Console.WriteLine($"\nКатегория добавлена! ID: {category.Id}");
+        try
+        {
+            var category = libraryLogic.CreateCategory(title);
+            Console.WriteLine($"\nКатегория добавлена! ID: {category.Id}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"\nОшибка при добавлении категории: {ex.Message}");
+        }
         Exit();
     }
 
@@ -139,7 +206,12 @@ class Program
         Console.WriteLine("=== НАЙТИ КНИГУ ПО ID ===\n");
 
         Console.Write("Введите ID книги: ");
-        var id = int.Parse(Console.ReadLine());
+        if (!int.TryParse(Console.ReadLine(), out int id) || id <= 0)
+        {
+            Console.WriteLine("Некорректный ID книги!");
+            Exit();
+            return;
+        }
 
         var book = libraryLogic.GetBookById(id);
         if (book != null)
@@ -159,15 +231,23 @@ class Program
         Console.WriteLine("=== НАЙТИ КНИГИ ПО ГОДУ ===\n");
 
         Console.Write("Введите год: ");
-        var year = int.Parse(Console.ReadLine());
+        if (!int.TryParse(Console.ReadLine(), out int year) || year < 1000 || year > DateTime.Now.Year + 1)
+        {
+            Console.WriteLine("Некорректный год!");
+            Exit();
+            return;
+        }
 
         var books = libraryLogic.GetBooksByYearRange(year);
-        Console.WriteLine();
         Console.WriteLine($"\nНайдено книг: {books.Count}");
-        foreach (var book in books)
+
+        if (books.Count > 0)
         {
-            PrintBook(book);
-            Console.WriteLine();
+            foreach (var book in books)
+            {
+                PrintBook(book);
+                Console.WriteLine();
+            }
         }
         Exit();
     }
@@ -178,15 +258,23 @@ class Program
         Console.WriteLine("=== НАЙТИ КНИГИ ПО КАТЕГОРИИ ===\n");
 
         Console.Write("Введите ID категории: ");
-        var categoryId = int.Parse(Console.ReadLine());
+        if (!int.TryParse(Console.ReadLine(), out int categoryId) || categoryId <= 0)
+        {
+            Console.WriteLine("Некорректный ID категории!");
+            Exit();
+            return;
+        }
 
         var books = libraryLogic.GetCategoryByTitle(categoryId);
-        Console.WriteLine();
         Console.WriteLine($"\nНайдено книг: {books.Count}");
-        foreach (var book in books)
+
+        if (books.Count > 0)
         {
-            PrintBook(book);
-            Console.WriteLine();
+            foreach (var book in books)
+            {
+                PrintBook(book);
+                Console.WriteLine();
+            }
         }
         Exit();
     }
@@ -197,7 +285,12 @@ class Program
         Console.WriteLine("=== ОБНОВИТЬ КНИГУ ===\n");
 
         Console.Write("Введите ID книги для обновления: ");
-        var id = int.Parse(Console.ReadLine());
+        if (!int.TryParse(Console.ReadLine(), out int id) || id <= 0)
+        {
+            Console.WriteLine("Некорректный ID книги!");
+            Exit();
+            return;
+        }
 
         Console.WriteLine("\nОставьте поле пустым, если не хотите менять значение:");
 
@@ -213,17 +306,47 @@ class Program
         var author = Console.ReadLine();
         if (string.IsNullOrEmpty(author)) author = null;
 
+        int? pages = null;
         Console.Write("Новое количество страниц: ");
         var pagesStr = Console.ReadLine();
-        int? pages = string.IsNullOrEmpty(pagesStr) ? null : int.Parse(pagesStr);
+        if (!string.IsNullOrEmpty(pagesStr))
+        {
+            if (!int.TryParse(pagesStr, out int tempPages) || tempPages <= 0)
+            {
+                Console.WriteLine("Некорректное количество страниц!");
+                Exit();
+                return;
+            }
+            pages = tempPages;
+        }
 
+        int? year = null;
         Console.Write("Новый год издания: ");
         var yearStr = Console.ReadLine();
-        int? year = string.IsNullOrEmpty(yearStr) ? null : int.Parse(yearStr);
+        if (!string.IsNullOrEmpty(yearStr))
+        {
+            if (!int.TryParse(yearStr, out int tempYear) || tempYear < 1000 || tempYear > DateTime.Now.Year + 1)
+            {
+                Console.WriteLine("Некорректный год издания!");
+                Exit();
+                return;
+            }
+            year = tempYear;
+        }
 
+        int? categoryId = null;
         Console.Write("Новый ID категории: ");
         var categoryStr = Console.ReadLine();
-        int? categoryId = string.IsNullOrEmpty(categoryStr) ? null : int.Parse(categoryStr);
+        if (!string.IsNullOrEmpty(categoryStr))
+        {
+            if (!int.TryParse(categoryStr, out int tempCategoryId) || tempCategoryId <= 0)
+            {
+                Console.WriteLine("Некорректный ID категории!");
+                Exit();
+                return;
+            }
+            categoryId = tempCategoryId;
+        }
 
         var success = libraryLogic.UpdateBook(id, title, description, author, pages, year, categoryId);
         if (success)
@@ -243,7 +366,12 @@ class Program
         Console.WriteLine("=== УДАЛИТЬ КНИГУ ===\n");
 
         Console.Write("Введите ID книги для удаления: ");
-        var id = int.Parse(Console.ReadLine());
+        if (!int.TryParse(Console.ReadLine(), out int id) || id <= 0)
+        {
+            Console.WriteLine("Некорректный ID книги!");
+            Exit();
+            return;
+        }
 
         var success = libraryLogic.DeleteBook(id);
         if (success)
