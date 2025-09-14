@@ -106,6 +106,7 @@ namespace Library.Logic
             var book = new List<Book>();
             using var conn = _context.GetConnection();
             using var cmd = new NpgsqlCommand("SELECT * FROM books WHERE year_create = @year_create", conn);
+            cmd.Parameters.AddWithValue("year_create", year_create);
 
             using var reader = cmd.ExecuteReader();
 
@@ -122,6 +123,7 @@ namespace Library.Logic
             var book = new List<Book>();
             using var conn = _context.GetConnection();
             using var cmd = new NpgsqlCommand("SELECT * FROM books WHERE category_id = @id", conn);
+            cmd.Parameters.AddWithValue("category_id", id);
 
             using var reader = cmd.ExecuteReader();
 
