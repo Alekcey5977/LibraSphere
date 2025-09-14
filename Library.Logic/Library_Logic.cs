@@ -1,5 +1,6 @@
 ﻿using Library.Model;
 using Npgsql;
+using System.Data;
 
 namespace Library.Logic
 {
@@ -68,6 +69,72 @@ namespace Library.Logic
             using var cmd = new NpgsqlCommand("DELETE FROM books WHERE id = @id", conn);
             cmd.Parameters.AddWithValue("id", id);
             return cmd.ExecuteNonQuery() > 0;
+        }
+
+        public Book? GetBookById(int id)
+        {
+            using var conn = _context.GetConnection();
+            using var cmd = new NpgsqlCommand("SELECT * FROM books WHERE id = @id", conn);
+            cmd.Parameters.AddWithValue("id", id);
+
+            using var reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                return MapBook(reader);
+            }
+            return null;
+        }
+
+        public List<Book> GetAllBook()
+        {
+            var book = new List<Book>();
+            using var conn = _context.GetConnection();
+            using var cmd = new NpgsqlCommand("SELECT * FROM books", conn);
+            using var reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                book.Add(MapBook(reader));
+            }
+
+            return book;
+        }
+
+        public List<Category> GetAllCategories()
+        {
+            var category = new List<Category>();
+            using var conn = _context.GetConnection();
+            using var cmd = new NpgsqlCommand("SELECT * FROM categories", conn);
+            using var reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                category.Add(MapCategory(reader));
+            }
+            return category;
+        }
+
+        public Book MapBook(NpgsqlDataReader reader)
+        {
+            return new Book
+            {
+                Id = reader.GetInt32("id"),
+                Title = reader.GetString("title"),
+                Description = reader.GetString("description"),
+                Author = reader.GetString("author"),
+                Number_of_pages = reader.GetInt32("number_of_pages"),
+                Year_Create = reader.GetInt32("year_create"),
+                CategoryId = reader.GetInt32("category"),
+            };
+        }
+
+        public Category MapCategory(NpgsqlDataReader reader)
+        {
+            return new Category
+            {
+                Id = reader.GetInt32("id"),
+                Title = reader.GetString("title")
+            };
         }
     }
 }
