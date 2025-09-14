@@ -14,6 +14,6 @@
 
         public int Year_Create { get; set; }
 
-        public string CategoryId { get; set; } = string.Empty;
+        public int CategoryId { get; set; }
     }
 }

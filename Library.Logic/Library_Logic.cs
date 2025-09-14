@@ -9,12 +9,12 @@ namespace Library.Logic
 
         public Library_Logic()
         {
-            var connectionString = "Host=localhost;Port=5432;Database=TaskManagerDB;Username=postgres;Password=твой_пароль";
+            var connectionString = "Host=localhost;Port=5432;Database=Library_DB;Username=postgres;Password=admin";
             _context = new PostgresContext(connectionString);
 
         }
 
-        public Book CreateBook(string title, string description, string author, int numberOfPages, int yearCreate, string categoryId)
+        public Book CreateBook(string title, string description, string author, int numberOfPages, int yearCreate, int categoryId)
         {
             using var conn = _context.GetConnection();
             using var cmd = new NpgsqlCommand(@"
@@ -47,7 +47,7 @@ namespace Library.Logic
         {
             using var conn = _context.GetConnection();
             using var cmd = new NpgsqlCommand(@"
-                INSERT INTO books (title)
+                INSERT INTO categories (title)
                 VALUES (@title)
                 RETURNING id", conn);
 
