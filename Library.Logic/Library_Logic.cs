@@ -101,11 +101,11 @@ namespace Library.Logic
             return book;
         }
 
-        public List<Book> GetBooksByYearRange(int data)
+        public List<Book> GetBooksByYearRange(int year_create)
         {
             var book = new List<Book>();
             using var conn = _context.GetConnection();
-            using var cmd = new NpgsqlCommand("SELECT * FROM books WHERE year_create = @data", conn);
+            using var cmd = new NpgsqlCommand("SELECT * FROM books WHERE year_create = @year_create", conn);
 
             using var reader = cmd.ExecuteReader();
 
