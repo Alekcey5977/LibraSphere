@@ -162,6 +162,7 @@ class Program
         var year = int.Parse(Console.ReadLine());
 
         var books = libraryLogic.GetBooksByYearRange(year);
+        Console.WriteLine();
         Console.WriteLine($"\nНайдено книг: {books.Count}");
         foreach (var book in books)
         {
@@ -180,6 +181,7 @@ class Program
         var categoryId = int.Parse(Console.ReadLine());
 
         var books = libraryLogic.GetCategoryByTitle(categoryId);
+        Console.WriteLine();
         Console.WriteLine($"\nНайдено книг: {books.Count}");
         foreach (var book in books)
         {
