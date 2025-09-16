@@ -183,7 +183,7 @@
             // txtNewCategory
             // 
             txtNewCategory.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            txtNewCategory.Location = new Point(257, 381);
+            txtNewCategory.Location = new Point(285, 378);
             txtNewCategory.Name = "txtNewCategory";
             txtNewCategory.Size = new Size(180, 39);
             txtNewCategory.TabIndex = 22;
