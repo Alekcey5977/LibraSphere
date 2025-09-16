@@ -10,7 +10,7 @@ namespace Library.Logic
 
         public Library_Logic()
         {
-            var connectionString = "Host=localhost;Port=5432;Database=Library_DB;Username=postgres;Password=admin";
+            var connectionString = "Host=localhost;Database=Library_DB;Integrated Security=true;TrustServerCertificate=true";
             _context = new PostgresContext(connectionString);
 
         }
