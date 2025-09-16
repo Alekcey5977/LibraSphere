@@ -18,7 +18,7 @@ namespace Library.WinForms
         {
             InitializeComponent();
             _logic = new Library_Logic();
-
+            LoadCategoriesForSearch();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -78,6 +78,72 @@ namespace Library.WinForms
         {
             UpdateForm updateForm = new UpdateForm();
             updateForm.ShowDialog();
+        }
+
+        private void LoadCategoriesForSearch()
+        {
+            try
+            {
+                var categories = _logic.GetAllCategories();
+                cmbSearchCategory.DataSource = categories;
+                cmbSearchCategory.DisplayMember = "Title";
+                cmbSearchCategory.ValueMember = "Id";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка загрузки категорий для поиска: " + ex.Message);
+            }
+        }
+
+        private void btnSearchByYear_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int year = (int)nudSearchYear.Value;
+                var books = _logic.GetBooksByYearRange(year);
+                if (books.Count == 0)
+                {
+                    MessageBox.Show($"Книг за {year} год не найдено.");
+                    dgvBooks.DataSource = null;
+                    return;
+                }
+
+                dgvBooks.DataSource = books;
+                MessageBox.Show($"Найдено {books.Count} книг за {year} год.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка поиска по году: " + ex.Message);
+            }
+        }
+
+        private void btnSearchByCategory_Click(object sender, EventArgs e)
+        {
+            if (cmbSearchCategory.SelectedValue == null)
+            {
+                MessageBox.Show("Выберите категорию.");
+                return;
+            }
+
+            try
+            {
+                int categoryId = (int)cmbSearchCategory.SelectedValue;
+                var books = _logic.GetCategoryByTitle(categoryId);
+
+                if (books.Count == 0)
+                {
+                    MessageBox.Show($"Книг в категории '{cmbSearchCategory.Text}' не найдено.");
+                    dgvBooks.DataSource = null;
+                    return;
+                }
+
+                dgvBooks.DataSource = books;
+                MessageBox.Show($"Найдено {books.Count} книг в категории '{cmbSearchCategory.Text}'.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка поиска по категории: " + ex.Message);
+            }
         }
     }
 }

@@ -154,6 +154,7 @@
             // 
             nudPages.Font = new Font("Segoe UI", 18F);
             nudPages.Location = new Point(163, 169);
+            nudPages.Maximum = new decimal(new int[] { 5000, 0, 0, 0 });
             nudPages.Name = "nudPages";
             nudPages.Size = new Size(195, 39);
             nudPages.TabIndex = 15;
@@ -161,10 +162,13 @@
             // nudYear
             // 
             nudYear.Font = new Font("Segoe UI", 18F);
-            nudYear.Location = new Point(163, 225);
+            nudYear.Location = new Point(163, 218);
+            nudYear.Maximum = new decimal(new int[] { 2025, 0, 0, 0 });
+            nudYear.Minimum = new decimal(new int[] { 1001, 0, 0, 0 });
             nudYear.Name = "nudYear";
             nudYear.Size = new Size(195, 39);
             nudYear.TabIndex = 16;
+            nudYear.Value = new decimal(new int[] { 1001, 0, 0, 0 });
             // 
             // button1
             // 
