@@ -31,7 +31,7 @@
 ## 🛠 Технологии
 
 - **Язык**: C#
-- **Платформа**: .NET 6+ / .NET Framework
+- **Платформа**: .NET 9
 - **Интерфейсы**: Windows Forms, Console App
 - **База данных**: PostgreSQL
 - **Драйвер**: Npgsql
