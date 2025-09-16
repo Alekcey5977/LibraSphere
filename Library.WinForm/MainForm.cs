@@ -30,6 +30,7 @@ namespace Library.WinForms
         {
             try
             {
+                LoadCategoriesForSearch();
                 var books = _logic.GetAllBook();
                 dgvBooks.DataSource = books;
                 MessageBox.Show($"Загружено {books.Count} книг.");
