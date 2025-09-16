@@ -196,7 +196,7 @@
             Controls.Add(txtAuthor);
             Controls.Add(txtTitle);
             Name = "CreateForm";
-            Text = "CreateForm";
+            Text = "Создание книги";
             Load += CreateForm_Load;
             ((System.ComponentModel.ISupportInitialize)nudPages).EndInit();
             ((System.ComponentModel.ISupportInitialize)nudYear).EndInit();

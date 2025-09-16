@@ -64,14 +64,18 @@
             // 
             nudYear.Font = new Font("Segoe UI", 18F);
             nudYear.Location = new Point(168, 276);
+            nudYear.Maximum = new decimal(new int[] { 2025, 0, 0, 0 });
+            nudYear.Minimum = new decimal(new int[] { 1001, 0, 0, 0 });
             nudYear.Name = "nudYear";
             nudYear.Size = new Size(195, 39);
             nudYear.TabIndex = 30;
+            nudYear.Value = new decimal(new int[] { 1001, 0, 0, 0 });
             // 
             // nudPages
             // 
             nudPages.Font = new Font("Segoe UI", 18F);
             nudPages.Location = new Point(168, 220);
+            nudPages.Maximum = new decimal(new int[] { 5000, 0, 0, 0 });
             nudPages.Name = "nudPages";
             nudPages.Size = new Size(195, 39);
             nudPages.TabIndex = 29;
@@ -232,7 +236,7 @@
             Controls.Add(txtAuthor);
             Controls.Add(txtTitle);
             Name = "UpdateForm";
-            Text = "UpdateForm";
+            Text = "Обновление книги";
             Load += UpdateForm_Load;
             ((System.ComponentModel.ISupportInitialize)nudYear).EndInit();
             ((System.ComponentModel.ISupportInitialize)nudPages).EndInit();

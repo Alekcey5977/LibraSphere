@@ -121,7 +121,7 @@
             Controls.Add(btnGetAllBooks);
             Controls.Add(dgvBooks);
             Name = "MainForm";
-            Text = "MainForm";
+            Text = "Меню";
             Load += MainForm_Load;
             ((System.ComponentModel.ISupportInitialize)dgvBooks).EndInit();
             ResumeLayout(false);
