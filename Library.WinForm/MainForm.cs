@@ -73,5 +73,11 @@ namespace Library.WinForms
                 MessageBox.Show("Ошибка удаления: " + ex.Message);
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            UpdateForm updateForm = new UpdateForm();
+            updateForm.ShowDialog();
+        }
     }
 }

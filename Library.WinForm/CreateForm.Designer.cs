@@ -41,6 +41,7 @@
             cmbCategory = new ComboBox();
             nudPages = new NumericUpDown();
             nudYear = new NumericUpDown();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)nudPages).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudYear).BeginInit();
             SuspendLayout();
@@ -48,7 +49,7 @@
             // txtTitle
             // 
             txtTitle.Font = new Font("Segoe UI", 18F);
-            txtTitle.Location = new Point(163, 48);
+            txtTitle.Location = new Point(163, 18);
             txtTitle.Name = "txtTitle";
             txtTitle.Size = new Size(195, 39);
             txtTitle.TabIndex = 0;
@@ -56,7 +57,7 @@
             // txtAuthor
             // 
             txtAuthor.Font = new Font("Segoe UI", 18F);
-            txtAuthor.Location = new Point(163, 93);
+            txtAuthor.Location = new Point(163, 63);
             txtAuthor.Name = "txtAuthor";
             txtAuthor.Size = new Size(195, 39);
             txtAuthor.TabIndex = 2;
@@ -64,7 +65,7 @@
             // txtDescription
             // 
             txtDescription.Font = new Font("Segoe UI", 18F);
-            txtDescription.Location = new Point(163, 145);
+            txtDescription.Location = new Point(163, 115);
             txtDescription.Name = "txtDescription";
             txtDescription.Size = new Size(195, 39);
             txtDescription.TabIndex = 3;
@@ -72,7 +73,7 @@
             // btnAddBook
             // 
             btnAddBook.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            btnAddBook.Location = new Point(108, 379);
+            btnAddBook.Location = new Point(21, 345);
             btnAddBook.Name = "btnAddBook";
             btnAddBook.Size = new Size(167, 42);
             btnAddBook.TabIndex = 7;
@@ -84,7 +85,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 18F);
-            label1.Location = new Point(21, 48);
+            label1.Location = new Point(21, 18);
             label1.Name = "label1";
             label1.Size = new Size(120, 32);
             label1.TabIndex = 8;
@@ -94,7 +95,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 18F);
-            label2.Location = new Point(21, 96);
+            label2.Location = new Point(21, 66);
             label2.Name = "label2";
             label2.Size = new Size(80, 32);
             label2.TabIndex = 9;
@@ -104,7 +105,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 18F);
-            label3.Location = new Point(21, 148);
+            label3.Location = new Point(21, 118);
             label3.Name = "label3";
             label3.Size = new Size(124, 32);
             label3.TabIndex = 10;
@@ -114,7 +115,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 18F);
-            label4.Location = new Point(21, 199);
+            label4.Location = new Point(21, 169);
             label4.Name = "label4";
             label4.Size = new Size(106, 32);
             label4.TabIndex = 11;
@@ -124,7 +125,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 18F);
-            label5.Location = new Point(21, 255);
+            label5.Location = new Point(21, 225);
             label5.Name = "label5";
             label5.Size = new Size(52, 32);
             label5.TabIndex = 12;
@@ -134,7 +135,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 18F);
-            label6.Location = new Point(21, 316);
+            label6.Location = new Point(21, 286);
             label6.Name = "label6";
             label6.Size = new Size(126, 32);
             label6.TabIndex = 13;
@@ -144,7 +145,7 @@
             // 
             cmbCategory.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
             cmbCategory.FormattingEnabled = true;
-            cmbCategory.Location = new Point(163, 316);
+            cmbCategory.Location = new Point(163, 286);
             cmbCategory.Name = "cmbCategory";
             cmbCategory.Size = new Size(195, 40);
             cmbCategory.TabIndex = 14;
@@ -152,7 +153,7 @@
             // nudPages
             // 
             nudPages.Font = new Font("Segoe UI", 18F);
-            nudPages.Location = new Point(163, 199);
+            nudPages.Location = new Point(163, 169);
             nudPages.Name = "nudPages";
             nudPages.Size = new Size(195, 39);
             nudPages.TabIndex = 15;
@@ -160,16 +161,27 @@
             // nudYear
             // 
             nudYear.Font = new Font("Segoe UI", 18F);
-            nudYear.Location = new Point(163, 255);
+            nudYear.Location = new Point(163, 225);
             nudYear.Name = "nudYear";
             nudYear.Size = new Size(195, 39);
             nudYear.TabIndex = 16;
+            // 
+            // button1
+            // 
+            button1.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            button1.Location = new Point(211, 345);
+            button1.Name = "button1";
+            button1.Size = new Size(167, 42);
+            button1.TabIndex = 17;
+            button1.Text = "Обновить";
+            button1.UseVisualStyleBackColor = true;
             // 
             // CreateForm
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(406, 450);
+            Controls.Add(button1);
             Controls.Add(nudYear);
             Controls.Add(nudPages);
             Controls.Add(cmbCategory);
@@ -207,5 +219,6 @@
         private ComboBox cmbCategory;
         private NumericUpDown nudPages;
         private NumericUpDown nudYear;
+        private Button button1;
     }
 }

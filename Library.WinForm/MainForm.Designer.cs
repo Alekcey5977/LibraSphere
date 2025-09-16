@@ -34,6 +34,7 @@
             btnDelete = new Button();
             txtBookId = new TextBox();
             label1 = new Label();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvBooks).BeginInit();
             SuspendLayout();
             // 
@@ -42,7 +43,7 @@
             dgvBooks.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvBooks.Location = new Point(22, 12);
             dgvBooks.Name = "dgvBooks";
-            dgvBooks.Size = new Size(748, 281);
+            dgvBooks.Size = new Size(852, 281);
             dgvBooks.TabIndex = 0;
             // 
             // btnGetAllBooks
@@ -59,7 +60,7 @@
             // btnCreate
             // 
             btnCreate.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            btnCreate.Location = new Point(500, 593);
+            btnCreate.Location = new Point(586, 523);
             btnCreate.Name = "btnCreate";
             btnCreate.Size = new Size(288, 45);
             btnCreate.TabIndex = 2;
@@ -96,11 +97,23 @@
             label1.TabIndex = 5;
             label1.Text = "ID книги для удаления";
             // 
+            // button1
+            // 
+            button1.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            button1.Location = new Point(586, 574);
+            button1.Name = "button1";
+            button1.Size = new Size(288, 45);
+            button1.TabIndex = 6;
+            button1.Text = "Обновить книгу";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 650);
+            ClientSize = new Size(898, 650);
+            Controls.Add(button1);
             Controls.Add(label1);
             Controls.Add(txtBookId);
             Controls.Add(btnDelete);
@@ -123,5 +136,6 @@
         private Button btnDelete;
         private TextBox txtBookId;
         private Label label1;
+        private Button button1;
     }
 }
