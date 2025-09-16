@@ -41,6 +41,9 @@
             btnSearchByYear = new Button();
             btnSearchByCategory = new Button();
             cmbSearchCategory = new ComboBox();
+            txtNewCategory = new TextBox();
+            btnAddCategory = new Button();
+            label4 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvBooks).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudSearchYear).BeginInit();
             SuspendLayout();
@@ -177,11 +180,43 @@
             cmbSearchCategory.Size = new Size(195, 40);
             cmbSearchCategory.TabIndex = 21;
             // 
+            // txtNewCategory
+            // 
+            txtNewCategory.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            txtNewCategory.Location = new Point(257, 381);
+            txtNewCategory.Name = "txtNewCategory";
+            txtNewCategory.Size = new Size(180, 39);
+            txtNewCategory.TabIndex = 22;
+            // 
+            // btnAddCategory
+            // 
+            btnAddCategory.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            btnAddCategory.Location = new Point(49, 426);
+            btnAddCategory.Name = "btnAddCategory";
+            btnAddCategory.Size = new Size(288, 45);
+            btnAddCategory.TabIndex = 23;
+            btnAddCategory.Text = "Добавить категорию";
+            btnAddCategory.UseVisualStyleBackColor = true;
+            btnAddCategory.Click += btnAddCategory_Click;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            label4.Location = new Point(12, 381);
+            label4.Name = "label4";
+            label4.Size = new Size(239, 32);
+            label4.TabIndex = 24;
+            label4.Text = "Название категории";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(898, 650);
+            Controls.Add(label4);
+            Controls.Add(btnAddCategory);
+            Controls.Add(txtNewCategory);
             Controls.Add(cmbSearchCategory);
             Controls.Add(btnSearchByCategory);
             Controls.Add(btnSearchByYear);
@@ -219,5 +254,8 @@
         private Button btnSearchByYear;
         private Button btnSearchByCategory;
         private ComboBox cmbSearchCategory;
+        private TextBox txtNewCategory;
+        private Button btnAddCategory;
+        private Label label4;
     }
 }

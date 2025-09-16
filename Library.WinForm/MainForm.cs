@@ -145,5 +145,30 @@ namespace Library.WinForms
                 MessageBox.Show("Ошибка поиска по категории: " + ex.Message);
             }
         }
+
+        private void btnAddCategory_Click(object sender, EventArgs e)
+        {
+            string title = txtNewCategory.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(title))
+            {
+                MessageBox.Show("Введите название категории.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                var category = _logic.CreateCategory(title);
+                MessageBox.Show($"Категория '{category.Title}' успешно добавлена с ID {category.Id}", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                txtNewCategory.Clear();
+
+                LoadCategoriesForSearch();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка добавления категории: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
