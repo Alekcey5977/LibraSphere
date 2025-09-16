@@ -39,5 +39,11 @@ namespace Library.WinForms
                 MessageBox.Show("Ошибка загрузки книг: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            CreateForm createForm = new CreateForm();
+            createForm.ShowDialog();
+        }
     }
 }

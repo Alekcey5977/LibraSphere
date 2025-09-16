@@ -30,6 +30,7 @@
         {
             dgvBooks = new DataGridView();
             btnGetAllBooks = new Button();
+            btnCreate = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvBooks).BeginInit();
             SuspendLayout();
             // 
@@ -38,12 +39,12 @@
             dgvBooks.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvBooks.Location = new Point(22, 12);
             dgvBooks.Name = "dgvBooks";
-            dgvBooks.Size = new Size(373, 281);
+            dgvBooks.Size = new Size(663, 281);
             dgvBooks.TabIndex = 0;
             // 
             // btnGetAllBooks
             // 
-            btnGetAllBooks.Location = new Point(421, 37);
+            btnGetAllBooks.Location = new Point(22, 308);
             btnGetAllBooks.Name = "btnGetAllBooks";
             btnGetAllBooks.Size = new Size(156, 39);
             btnGetAllBooks.TabIndex = 1;
@@ -51,11 +52,22 @@
             btnGetAllBooks.UseVisualStyleBackColor = true;
             btnGetAllBooks.Click += btnGetAllBooks_Click;
             // 
+            // btnCreate
+            // 
+            btnCreate.Location = new Point(627, 407);
+            btnCreate.Name = "btnCreate";
+            btnCreate.Size = new Size(143, 31);
+            btnCreate.TabIndex = 2;
+            btnCreate.Text = "Добавить книгу";
+            btnCreate.UseVisualStyleBackColor = true;
+            btnCreate.Click += btnCreate_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnCreate);
             Controls.Add(btnGetAllBooks);
             Controls.Add(dgvBooks);
             Name = "MainForm";
@@ -69,5 +81,6 @@
 
         private DataGridView dgvBooks;
         private Button btnGetAllBooks;
+        private Button btnCreate;
     }
 }
