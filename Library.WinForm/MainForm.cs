@@ -48,7 +48,7 @@ namespace Library.WinForms
 
         private void txtBookId_Click(object sender, EventArgs e)
         {
-            if (!int.TryParse(btnDelete.Text, out int id))
+            if (!int.TryParse(txtBookId.Text, out int id))
             {
                 MessageBox.Show("Введите корректный ID книги.");
                 return;
