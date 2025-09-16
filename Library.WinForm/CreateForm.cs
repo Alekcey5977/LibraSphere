@@ -88,8 +88,6 @@ namespace Library.WinForms
             txtTitle.Clear();
             txtAuthor.Clear();
             txtDescription.Clear();
-            nudPages.Value = 100;
-            nudYear.Value = DateTime.Now.Year;
         }
     }
 }

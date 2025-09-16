@@ -45,5 +45,33 @@ namespace Library.WinForms
             CreateForm createForm = new CreateForm();
             createForm.ShowDialog();
         }
+
+        private void txtBookId_Click(object sender, EventArgs e)
+        {
+            if (!int.TryParse(btnDelete.Text, out int id))
+            {
+                MessageBox.Show("Введите корректный ID книги.");
+                return;
+            }
+
+            try
+            {
+                bool deleted = _logic.DeleteBook(id);
+                if (deleted)
+                {
+                    MessageBox.Show("Книга удалена.");
+                    btnGetAllBooks_Click(null, null);
+                    txtBookId.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("Книга с таким ID не найдена.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка удаления: " + ex.Message);
+            }
+        }
     }
 }
